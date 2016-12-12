@@ -14,7 +14,7 @@ docpadConfig = {
 		# Specify some site properties
 		site:
 			# The production url of our website
-			url: "//paulradzkov.com/bettertext.css"
+			url: "//paulradzkov.com/space.less"
 
 			# no slash at the end
 			canonicalUrl: "http://paulradzkov.com/space.less"
