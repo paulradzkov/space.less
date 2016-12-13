@@ -5,7 +5,7 @@ description: "Toolkit for managing negative space"
 styles: [ 'css/demo.css' ]
 ---
 
-# space.less
+# space.less — toolkit for managing negative space
 
 [![npm version](https://badge.fury.io/js/space.less.svg)](http://badge.fury.io/js/space.less)
 [![bower version](https://badge.fury.io/bo/space.less.svg)](http://badge.fury.io/bo/space.less)
@@ -13,7 +13,6 @@ styles: [ 'css/demo.css' ]
 <div class="row" style="max-width: 1280px">
     <div class="col-xs-12 col-sm-8">
         <p>
-            Toolkit for managing negative space.
             Designed to make margins, paddings, gutters consistent across the project.
         </p>
         <p>
@@ -28,6 +27,20 @@ styles: [ 'css/demo.css' ]
         </blockquote>
     </div>
 </div>
+
+## Installation
+
+**Compiled from CDN**  
+[`https://unpkg.com/space.less@0.0.1/space.css`](https://unpkg.com/space.less@0.0.1/space.css) <small>(XKB gzip)</small>  
+[`https://unpkg.com/space.less@0.0.1/space.min.css`](https://unpkg.com/space.less@0.0.1/space.min.css) <small>(XKB gzip)</small>  
+[`https://unpkg.com/space.less@0.0.1/space.min.css.map`](https://unpkg.com/space.less@0.0.1/space.min.css.map)
+
+**NPM**  
+`npm install space.less --save-dev`
+
+**Bower**  
+`bower install space.less --save`
+
 
 ## Math
 
@@ -313,4 +326,4 @@ For non-rectangular spacings use additional class modifier:
 [github]: https://github.com/paulradzkov/space.less
 [releases]: https://github.com/paulradzkov/space.less/releases
 [issues]: https://github.com/paulradzkov/space.less/issues
-[source]: https://github.com/paulradzkov/bettertext.css/blob/master/space.less
+[source]: https://github.com/paulradzkov/space.less/blob/master/space.less
