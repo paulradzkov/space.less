@@ -38,18 +38,18 @@
 
         // we don't want .space-minus-zero-xs { margin: 0;}
         & when not ((@class = minus) and (@index = 1)) {
-            .space-@{class}-@{current-alias}-@{suff}        { @{type}: (@current-value * @sign); }
-            .space-@{class}-top-@{current-alias}-@{suff}    { @{type}-top: (@current-value * @sign); }
-            .space-@{class}-bottom-@{current-alias}-@{suff} { @{type}-bottom: (@current-value * @sign); }
-            .space-@{class}-left-@{current-alias}-@{suff}   { @{type}-left: (@current-value * @sign); }
-            .space-@{class}-right-@{current-alias}-@{suff}  { @{type}-right: (@current-value * @sign); }
-            .space-@{class}-v-@{current-alias}-@{suff}      { @{type}-top: (@current-value * @sign); @{type}-bottom: (@current-value * @sign); }
-            .space-@{class}-h-@{current-alias}-@{suff}      { @{type}-left: (@current-value * @sign); @{type}-right: (@current-value * @sign); }
+            .space-@{class}-@{current-alias}-@{suff}        { && { @{type}: (@current-value * @sign); } }
+            .space-@{class}-top-@{current-alias}-@{suff}    { && { @{type}-top: (@current-value * @sign); } }
+            .space-@{class}-bottom-@{current-alias}-@{suff} { && { @{type}-bottom: (@current-value * @sign); } }
+            .space-@{class}-left-@{current-alias}-@{suff}   { && { @{type}-left: (@current-value * @sign); } }
+            .space-@{class}-right-@{current-alias}-@{suff}  { && { @{type}-right: (@current-value * @sign); } }
+            .space-@{class}-v-@{current-alias}-@{suff}      { && { @{type}-top: (@current-value * @sign); @{type}-bottom: (@current-value * @sign); } }
+            .space-@{class}-h-@{current-alias}-@{suff}      { && { @{type}-left: (@current-value * @sign); @{type}-right: (@current-value * @sign); } }
 
             // we don't want tall and wide classes on zero and nano steps
             & when (@index > 2) {
-                .space-@{class}-tall-@{current-alias}-@{suff} { @{type}: (@current-value * @sign) (@current-pre-value * @sign); }
-                .space-@{class}-wide-@{current-alias}-@{suff} { @{type}: (@current-pre-value * @sign) (@current-value * @sign); }
+                .space-@{class}-tall-@{current-alias}-@{suff} { && { @{type}: (@current-value * @sign) (@current-pre-value * @sign); } }
+                .space-@{class}-wide-@{current-alias}-@{suff} { && { @{type}: (@current-pre-value * @sign) (@current-value * @sign); } }
             }
         }
     }
@@ -57,15 +57,13 @@
     // Render module with breakpoint suffix
     .space(@suff) {
 
-        .space {
-            &-auto-@{suff}        { margin:        auto; }
-            &-auto-top-@{suff}    { margin-top:    auto; }
-            &-auto-bottom-@{suff} { margin-bottom: auto; }
-            &-auto-left-@{suff}   { margin-left:   auto; }
-            &-auto-right-@{suff}  { margin-right:  auto; }
-            &-auto-v-@{suff}      { margin-top: auto; margin-bottom: auto; }
-            &-auto-h-@{suff}      { margin-left: auto; margin-right: auto; }
-        }
+        .space-auto-@{suff}        { && { margin:        auto; } }
+        .space-auto-top-@{suff}    { && { margin-top:    auto; } }
+        .space-auto-bottom-@{suff} { && { margin-bottom: auto; } }
+        .space-auto-left-@{suff}   { && { margin-left:   auto; } }
+        .space-auto-right-@{suff}  { && { margin-right:  auto; } }
+        .space-auto-v-@{suff}      { && { margin-top: auto; margin-bottom: auto; } }
+        .space-auto-h-@{suff}      { && { margin-left: auto; margin-right: auto; } }
 
         .loop-space-steps(in, @suff, padding, 1, @i);
         .loop-space-steps(out, @suff, margin, 1, @i);
