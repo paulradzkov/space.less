@@ -12,9 +12,9 @@ Together it is a part of communication language between designers and fronte
 ## Installation
 
 **Compiled from CDN**  
-[`https://unpkg.com/space.less@0.0.1/space.css`](https://unpkg.com/space.less@0.0.1/space.css)  
-[`https://unpkg.com/space.less@0.0.1/space.min.css`](https://unpkg.com/space.less@0.0.1/space.min.css)  
-[`https://unpkg.com/space.less@0.0.1/space.min.css.map`](https://unpkg.com/space.less@0.0.1/space.min.css.map)
+[`https://unpkg.com/space.less@0.0.2/space.css`](https://unpkg.com/space.less@0.0.2/space.css)  
+[`https://unpkg.com/space.less@0.0.2/space.min.css`](https://unpkg.com/space.less@0.0.2/space.min.css)  
+[`https://unpkg.com/space.less@0.0.2/space.min.css.map`](https://unpkg.com/space.less@0.0.2/space.min.css.map)
 
 **NPM**  
 `npm install space.less --save-dev`
