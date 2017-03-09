@@ -1,6 +1,6 @@
 {
   "name": "space.less",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Toolkit for managing negative space",
   "author": "Paul Radzkov <radzkov@gmail.com>",
   "repository": {
@@ -16,8 +16,7 @@
     "margin",
     "padding"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "main": "space.less",
   "devDependencies": {
     "bower": "^1.4.1",
