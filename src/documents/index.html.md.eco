@@ -310,16 +310,74 @@ For non-rectangular spacings use additional class modifier:
 1. Suffixes `-tall` and `-wide` can't be used together with `.space-auto`.  
     Suffixes `-tall` and `-wide` doesn't exist for `-zero` and `-nano` spacings.
 
+## Usage in HTML
+
+Link compiled `space.css` in the head of your page.
+Apply classes to any HTML element to get desired margins and paddings.
+
+## Usage in LESS
+
+Install library with `npm install space.less --save-dev` and include its main file inside your project less file:
+
+```less
+@import (less) "./node_modules/space.less/space.less";
+```
+
+That is enough to run library with default parameters.
+
+### Default parameters
+
+Parameters stored in mixin:
+
+```less
+.space-settings() {
+
+    @spaces: 0, 8px, 16px, 24px, 40px, 64px, 104px, 168px;
+    @spacealias: zero, nano, micro, mili, base, kilo, mega, giga;
+
+    // media breakpoints
+    @breakpoints:
+        ~"(min-width: 576px)",
+        ~"(min-width: 768px)",
+        ~"(min-width: 992px)",
+        ~"(min-width: 1200px)";
+
+    // names for breakpoint suffixes
+    @suffixes: xs, sm, md, lg, xl;
+
+    // IMPORTANT: suffixes count should be bigger than breakpoints count by 1
+    // suffixes-count = breakpoints-count + 1
+}
+```
+
+### Redefining parameters
+
+To change any (or every) parameter add setting mixin after import inside your .less file:
+
+```less
+@import (less) "./node_modules/space.less/space.less";
+
+.space-settings() {
+
+    @spaces: 0, 5px, 10px, 25px, 50px;
+    @spacealias: zero, small, normal, large, huge;
+
+}
+```
+
+Only sizes and names for spacing was redefined in example above. Breakpoint parameters remains default.
+
+
 ---
 
-<small>Автор [Павел Радьков][paulradzkov], [GitHub проекта][github], MIT License</small>
+<small>Made by [Paul Radzkov][paulradzkov], [GitHub][github], MIT License</small>
 
 <p class="likely">
-    <span class="facebook">Поделиться</span>
-    <span class="twitter">Твитнуть</span>
-    <span class="gplus">Плюсануть</span>
-    <span class="vkontakte">Поделиться</span>
-    <span class="telegram">Телеграмнуть</span>
+    <span class="facebook">Share</span>
+    <span class="twitter">Tweet</span>
+    <span class="gplus">Share</span>
+    <span class="vkontakte">Share</span>
+    <span class="telegram">Share</span>
 </p>
 
 [paulradzkov]: http://paulradzkov.com

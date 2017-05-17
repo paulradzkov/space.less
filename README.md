@@ -22,11 +22,61 @@ Together it is a part of communication language between designers and fronte
 **Bower**  
 `bower install space.less --save`
 
-## Using in HTML
+## Usage in HTML
 
-Include compiled `space.css` into head of page at the bottom. Or import `space.less` into your main .less file:
+Link compiled `space.css` in the head of your page.
+Apply classes to any HTML element to get desired margins and paddings.
+See [docs](http://paulradzkov.github.io/space.less/) for classnames.
 
+## Usage in LESS
+
+Install library with `npm install space.less --save-dev` and include its main file inside your project less file:
+
+```less
+@import (less) "./node_modules/space.less/space.less";
 ```
-@import (less) "node_modules/space.less/space.less";
+
+That is enough to run library with default parameters.
+
+### Default parameters
+
+Parameters stored in mixin:
+
+```less
+.space-settings() {
+
+    @spaces: 0, 8px, 16px, 24px, 40px, 64px, 104px, 168px;
+    @spacealias: zero, nano, micro, mili, base, kilo, mega, giga;
+
+    // media breakpoints
+    @breakpoints:
+        ~"(min-width: 576px)",
+        ~"(min-width: 768px)",
+        ~"(min-width: 992px)",
+        ~"(min-width: 1200px)";
+
+    // names for breakpoint suffixes
+    @suffixes: xs, sm, md, lg, xl;
+
+    // IMPORTANT: suffixes count should be bigger than breakpoints count by 1
+    // suffixes-count = breakpoints-count + 1
+}
 ```
-Apply classes to any HTML elements to get desired margins and paddings. See [docs](http://paulradzkov.github.io/space.less/).
+
+### Redefining parameters
+
+To change any (or every) parameter add setting mixin after import inside your .less file:
+
+```less
+@import (less) "./node_modules/space.less/space.less";
+
+.space-settings() {
+
+    @spaces: 0, 5px, 10px, 25px, 50px;
+    @spacealias: zero, small, normal, large, huge;
+
+}
+```
+
+Only sizes and names for spacing was redefined in example above. Breakpoint parameters remains default.
+
