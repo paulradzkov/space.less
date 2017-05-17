@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+
+    <!-- Site Properities -->
+    <title>space.less / space.less</title>
+    <meta name="description" content="Toolkit for managing negative space" />
+    <meta name="keywords" content="toolkit, managing, negative, space, LESS, css, bower, npm, package" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <!-- DocPad Meta -->
+    <meta name="generator" content="DocPad v6.78.6" />
+
+    <link rel="stylesheet" href="//paulradzkov.com/space.less/vendor/normalize.css/normalize.css">
+    <link rel="stylesheet" href="//paulradzkov.com/space.less/css/github.css">
+    <link rel="stylesheet" href="https://unpkg.com/bettertext.css@latest/bettertext.css">
+    <link rel="stylesheet" href="https://unpkg.com/flxgrid.css@latest/flxgrid.css " media="screen">
+    <link rel="stylesheet" href="https://unpkg.com/links.less@latest/links.css " media="screen">
+    <link rel="stylesheet" href="//paulradzkov.com/space.less/space.css">
+    <link rel="stylesheet" href="https://unpkg.com/ilyabirman-likely@2/release/likely.css " media="screen">
+
+    <!-- DocPad Styles + Our Own -->
+    <link  rel="stylesheet" href="//paulradzkov.com/space.less/css/demo.css" />
+
+    <link rel="canonical" href="http://paulradzkov.com/space.less/">
+    <meta property="og:title" content="space.less" />
+<meta property="og:description" content="Toolkit for managing negative space" />
+
+    <meta property="og:image" content="//paulradzkov.com/space.less/img/og/og-index.png" />
+
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://paulradzkov.com/space.less" />
+    <meta property="og:site_name" content="space.less" />
+
+<meta property="og:locale" content="ru_RU" />
+
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@paul_radzkov">
+<meta name="twitter:title" content="space.less">
+<meta name="twitter:description" content="Toolkit for managing negative space">
+
+<meta name="twitter:image" content="//paulradzkov.com/space.less/img/og/og-index.png">
+
+
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-29416794-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body>
+    <article>
+       <h1 id="space-less-toolkit-for-managing-negative-space">space.less — toolkit for managing negative space</h1>
+<p><a href="http://badge.fury.io/js/space.less"><img src="https://badge.fury.io/js/space.less.svg" alt="npm version"></a>
+<a href="http://badge.fury.io/bo/space.less"><img src="https://badge.fury.io/bo/space.less.svg" alt="bower version"></a></p>
+<div class="row" style="max-width: 1280px">
+    <div class="col-xs-12 col-sm-8">
+        <p>
+            Designed to make margins, paddings, gutters consistent across the project.
+        </p>
+        <p>
+            From design point of view this is an argeement on what distance to use between objects in UI layout.
+            From frontend perspective this is a set of classnames to rule margins and paddings on different media queries breakpoints.
+            Together it is a part of communication language between designers and frontend developers.
+        </p>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <blockquote class="space-in-zero-sm" style="font-size: 0.875em;">
+            <strong>Negative space</strong> (or white space). In page layout and illustration, negative space is the portion of a page left unmarked: margins, gutters, and space between columns, lines of type, graphics, figures, or objects drawn or depicted. The term white space arises from graphic design practice, where printing processes generally use white paper.
+        </blockquote>
+    </div>
+</div>
+
+<h2 id="installation">Installation</h2>
+<p><strong>Compiled from CDN</strong><br><a href="https://unpkg.com/space.less@0.0.2/space.css"><code>https://unpkg.com/space.less@0.0.2/space.css</code></a> <small>(7.7KB gzip)</small><br><a href="https://unpkg.com/space.less@0.0.2/space.min.css"><code>https://unpkg.com/space.less@0.0.2/space.min.css</code></a> <small>(7.2KB gzip)</small><br><a href="https://unpkg.com/space.less@0.0.2/space.min.css.map"><code>https://unpkg.com/space.less@0.0.2/space.min.css.map</code></a></p>
+<p><strong>NPM</strong><br><code>npm install space.less --save-dev</code></p>
+<p><strong>Bower</strong><br><code>bower install space.less --save</code></p>
+<h2 id="math">Math</h2>
+<div class="row row-middle-sm" style="max-width: 50rem">
+    <div class="col-xs-12 col-sm-min" style="min-width: 17em">
+
+<pre class="highlight"><code class="hljs cs">       <span class="hljs-number">8</span> =   <span class="hljs-number">8</span>  — nano
+ <span class="hljs-number">8</span> +   <span class="hljs-number">8</span> =  <span class="hljs-number">16</span>  — micro
+ <span class="hljs-number">8</span> +  <span class="hljs-number">16</span> =  <span class="hljs-number">24</span>  — mili
+<span class="hljs-number">16</span> +  <span class="hljs-number">24</span> =  <span class="hljs-number">40</span>  — <span class="hljs-keyword">base</span>
+<span class="hljs-number">24</span> +  <span class="hljs-number">40</span> =  <span class="hljs-number">64</span>  — kilo
+<span class="hljs-number">40</span> +  <span class="hljs-number">64</span> = <span class="hljs-number">104</span>  — mega
+<span class="hljs-number">64</span> + <span class="hljs-number">104</span> = <span class="hljs-number">168</span>  — giga
+</code></pre>
+
+    </div>
+    <div class="col-xs-12 col-sm-min" style="min-width: 17em">
+        <p class="space-out-top-mili-xs">
+        As a foundation taken a set of values assigned to some aliases.
+        The values are not random, this is a mathematical series where every next element is a sum of previous two elements; the first element is 8.
+        </p>
+    </div>
+</div>
+
+<h2 id="demo">Demo</h2>
+<div class="row space-minus-h-base-xs">
+    <div class="col-xs-shrink space-in-left-base-xs space-in-right-zero-xs">
+        <dl class="space-out-bottom-base-xs space-in-nano-xs space-demo space-demo-small">
+            <dt class="alias"><code>nano</code></dt>
+            <dd class="value">8</dd>
+        </dl>
+        <dl class="space-out-bottom-base-xs space-in-micro-xs space-demo space-demo-small">
+            <dt class="alias"><code>micro</code></dt>
+            <dd class="value">16</dd>
+        </dl>
+        <dl class="space-out-bottom-base-xs space-in-mili-xs space-demo space-demo-small">
+            <dt class="alias"><code>mili</code></dt>
+            <dd class="value">24</dd>
+        </dl>
+    </div>
+    <div class="col-xs-shrink space-in-left-base-xs space-in-right-zero-xs">
+        <dl class="space-out-bottom-base-xs space-in-base-xs space-demo">
+            <dt class="alias"><code>base</code></dt>
+            <dd class="value space-out-top-nano-xs">40</dd>
+        </dl>
+        <dl class="space-out-bottom-base-xs space-in-kilo-xs space-demo">
+            <dt class="alias"><code>kilo</code></dt>
+            <dd class="value space-out-top-micro-xs space-in-top-nano-xs">64</dd>
+        </dl>
+    </div>
+    <div class="col-xs-shrink space-in-left-base-xs space-in-right-zero-xs">
+        <dl class="space-out-bottom-base-xs space-in-mega-xs space-demo space-demo-big">
+            <dt class="alias"><code>mega</code></dt>
+            <dd class="value space-out-top-base-xs">104</dd>
+        </dl>
+    </div>
+    <div class="col-xs-shrink space-in-left-base-xs space-in-right-zero-xs">
+        <dl class="space-out-bottom-base-xs space-in-giga-xs space-demo space-demo-big">
+            <dt class="alias"><code>giga</code></dt>
+            <dd class="value space-out-top-kilo-xs space-in-top-micro-xs">168</dd>
+        </dl>
+    </div>
+</div>
+
+<h2 id="classnames">Classnames</h2>
+<p>For equal spaces on every side apply classnames constructed on the following scheme:</p>
+<table class="demo-table demo-table-common">
+    <thead>
+        <tr>
+            <th>.space</th>
+            <th>-out</th>
+            <th>-mili</th>
+            <th>-md</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td>-in</td>
+            <td></td>
+            <td></td>
+            <td>— creates paddings</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>-out</td>
+            <td></td>
+            <td></td>
+            <td>— creates margins</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>-minus</td>
+            <td></td>
+            <td></td>
+            <td>— negative margins</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>-auto¹</td>
+            <td class="empty"></td>
+            <td></td>
+            <td>— margin: auto</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-zero²</td>
+            <td></td>
+            <td>— set value to null</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-nano</td>
+            <td></td>
+            <td>— value = 8px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-micro</td>
+            <td></td>
+            <td>— value = 16px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-mili</td>
+            <td></td>
+            <td>— value = 24px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-base</td>
+            <td></td>
+            <td>— value = 40px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-kilo</td>
+            <td></td>
+            <td>— value = 64px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-mega</td>
+            <td></td>
+            <td>— value = 104px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-giga</td>
+            <td></td>
+            <td>— value = 168px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>-xs</td>
+            <td>— for all screens</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>-sm</td>
+            <td>— min-width: 576px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>-md</td>
+            <td>— min-width: 768px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>-lg</td>
+            <td>— min-width: 992px</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>-xl</td>
+            <td>— min-width: 1200px</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Exclusions:</strong></p>
+<ol>
+<li>Classes <code>.space-auto-xs</code> and similiar don&#39;t have &#39;value&#39; part.</li>
+<li>Suffix <code>-zero</code> could be applied only to <code>.space-in</code> and <code>.space-out</code> classnames. It can&#39;t be used together with <code>.space-minus</code> or <code>.space-auto</code>.</li>
+</ol>
+<p>For non-rectangular spacings use additional class modifier:</p>
+<table class="demo-table demo-table-exclusions">
+    <thead>
+        <tr>
+            <th>.space</th>
+            <th>-in</th>
+            <th>-tall</th>
+            <th>-kilo</th>
+            <th>-xs</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-top</td>
+            <td colspan="2">— set top value</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-bottom</td>
+            <td colspan="2">— bottom value</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-left</td>
+            <td colspan="2">— left</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-right</td>
+            <td colspan="2">— right</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-v</td>
+            <td colspan="2">— top and bottom (vertical)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-h</td>
+            <td colspan="2">— left and right (horizontal)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-tall¹</td>
+            <td colspan="2">— smaller horizontal space</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>-wide¹</td>
+            <td colspan="2">— smaller vertical space</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><strong>Exclusions:</strong></p>
+<ol>
+<li>Suffixes <code>-tall</code> and <code>-wide</code> can&#39;t be used together with <code>.space-auto</code>.<br> Suffixes <code>-tall</code> and <code>-wide</code> doesn&#39;t exist for <code>-zero</code> and <code>-nano</code> spacings.</li>
+</ol>
+<h2 id="usage-in-html">Usage in HTML</h2>
+<p>Link compiled <code>space.css</code> in the head of your page.
+Apply classes to any HTML element to get desired margins and paddings.</p>
+<h2 id="usage-in-less">Usage in LESS</h2>
+<p>Install library with <code>npm install space.less --save-dev</code> and include its main file inside your project less file:</p>
+<pre class="highlight"><code class="hljs less"><span class="hljs-at_rule">@import</span> (less) <span class="hljs-string">"./node_modules/space.less/space.less"</span>;
+</code></pre>
+<p>That is enough to run library with default parameters.</p>
+<h3 id="default-parameters">Default parameters</h3>
+<p>Parameters stored in mixin:</p>
+<pre class="highlight"><code class="hljs less"><span class="hljs-class">.space-settings</span>() {
+
+    <span class="hljs-variable">@spaces:</span> <span class="hljs-number">0</span>, <span class="hljs-number">8px</span>, <span class="hljs-number">16px</span>, <span class="hljs-number">24px</span>, <span class="hljs-number">40px</span>, <span class="hljs-number">64px</span>, <span class="hljs-number">104px</span>, <span class="hljs-number">168px</span>;
+    <span class="hljs-variable">@spacealias:</span> zero, nano, micro, mili, base, kilo, mega, giga;
+
+    <span class="hljs-comment">// media breakpoints</span>
+    <span class="hljs-variable">@breakpoints:</span>
+        <span class="hljs-string">~"(min-width: 576px)"</span>,
+        <span class="hljs-string">~"(min-width: 768px)"</span>,
+        <span class="hljs-string">~"(min-width: 992px)"</span>,
+        <span class="hljs-string">~"(min-width: 1200px)"</span>;
+
+    <span class="hljs-comment">// names for breakpoint suffixes</span>
+    <span class="hljs-variable">@suffixes:</span> xs, sm, md, lg, xl;
+
+    <span class="hljs-comment">// IMPORTANT: suffixes count should be bigger than breakpoints count by 1</span>
+    <span class="hljs-comment">// suffixes-count = breakpoints-count + 1</span>
+}
+</code></pre>
+<h3 id="redefining-parameters">Redefining parameters</h3>
+<p>To change any (or every) parameter add setting mixin after import inside your .less file:</p>
+<pre class="highlight"><code class="hljs less"><span class="hljs-at_rule">@import</span> (less) <span class="hljs-string">"./node_modules/space.less/space.less"</span>;
+
+<span class="hljs-class">.space-settings</span>() {
+
+    <span class="hljs-variable">@spaces:</span> <span class="hljs-number">0</span>, <span class="hljs-number">5px</span>, <span class="hljs-number">10px</span>, <span class="hljs-number">25px</span>, <span class="hljs-number">50px</span>;
+    <span class="hljs-variable">@spacealias:</span> zero, small, normal, large, huge;
+
+}
+</code></pre>
+<p>Only sizes and names for spacing was redefined in example above. Breakpoint parameters remains default.</p>
+<hr>
+<p><small>Made by <a href="http://paulradzkov.com">Paul Radzkov</a>, <a href="https://github.com/paulradzkov/space.less">GitHub</a>, MIT License</small></p>
+<p class="likely">
+    <span class="facebook">Share</span>
+    <span class="twitter">Tweet</span>
+    <span class="gplus">Share</span>
+    <span class="vkontakte">Share</span>
+    <span class="telegram">Share</span>
+</p>
+
+
+    </article>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script async defer src="https://unpkg.com/ilyabirman-likely@2/release/likely.js"></script>
+    <!-- DocPad Scripts + Our Own -->
+    
+
+</body>
+</html>

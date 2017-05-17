@@ -1,0 +1,104 @@
+.space-demo {
+    box-sizing: border-box;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: stretch;
+    text-align: center;
+    font-size: 16px;
+    background-color: rgba(141, 69, 238, 0.35);
+}
+
+.space-demo-small {
+    width: 120px;
+    height: 120px;
+}
+
+.space-demo-big {
+    width: 440px;
+    height: 440px;
+}
+
+.value {
+    position: absolute;
+    top: 0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:auto;
+    line-height: 24px;
+}
+
+.alias {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: stretch;
+    background-color: #fff;
+}
+
+.alias code {
+    margin: auto;
+}
+
+.demo-table {
+    margin: 1.5em 0;
+    white-space: nowrap;
+}
+
+.demo-table td:not(:last-child) {
+    font-family: monospace, monospace;
+}
+
+.demo-table th {
+    font-family: monospace, monospace;
+    font-size: 31px;
+    text-align: left;
+}
+.demo-table td,
+.demo-table th {
+    border-left: 2px solid #fff;
+}
+.demo-table td {
+    padding-left: .75em;
+}
+
+.demo-table-common th:nth-child(2),
+.demo-table-common td:nth-child(2) {
+    color: rgba(208, 1, 27, 1);
+    background: rgba(208, 1, 27, 0.1);
+}
+.demo-table-common th:nth-child(3),
+.demo-table-common td:nth-child(3) {
+    color: rgba(141, 69, 238, 1);
+    background: rgba(141, 69, 238, 0.1);
+}
+.demo-table-common th:nth-child(4),
+.demo-table-common td:nth-child(4) {
+    color: rgba(51, 145, 16, 1);
+    background: rgba(51, 145, 16, 0.1);
+}
+
+.demo-table-exclusions th:nth-child(2) {
+    color: rgba(208, 1, 27, 1);
+}
+.demo-table-exclusions th:nth-child(3),
+.demo-table-exclusions td:nth-child(3) {
+    color: rgba(39, 113, 198, 1);
+    background: rgba(39, 113, 198, 0.1);
+}
+.demo-table-exclusions th:nth-child(4) {
+    color: rgba(141, 69, 238, 1);
+}
+.demo-table-exclusions th:nth-child(5) {
+    width: 4em;
+    color: rgba(51, 145, 16, 1);
+}
+.demo-table td.empty {
+    background: none;
+}
