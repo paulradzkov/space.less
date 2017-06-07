@@ -1,9 +1,9 @@
-/*! space.less v0.0.2 | MIT License | github.com/paulradzkov/space.less */
+/* space.less v0.0.3 | MIT License | github.com/paulradzkov/space.less */
 
 .space-settings() {
 
     @spaces: 0, 8px, 16px, 24px, 40px, 64px, 104px, 168px;
-    @spacealias: zero, nano, micro, mili, base, kilo, mega, giga;
+    @spacealias: -zero, -nano, -micro, -mili, -base, -kilo, -mega, -giga;
 
     // media breakpoints
     @breakpoints:
@@ -13,7 +13,7 @@
         ~"(min-width: 1200px)";
 
     // names for breakpoint suffixes
-    @suffixes: xs, sm, md, lg, xl;
+    @suffixes: -xs, -sm, -md, -lg, -xl;
 
     // IMPORTANT: suffixes count should be bigger than breakpoints count by 1
     // suffixes-count = breakpoints-count + 1
@@ -29,27 +29,37 @@
     @m: length(@suffixes);    // how many suffixes we have
     @first-suffix: extract(@suffixes, 1); // first breakpoint suffix
 
+    @none:;
+    @top: -top;
+    @bottom: -bottom;
+    @left: -left;
+    @right: -right;
+    @v: -v;
+    @h: -h;
+    @tall: -tall;
+    @wide: -wide;
+
     // Basic looping in LESS
-    .loop-space-steps(@class, @suff, @type, @sign, @index: @i) when (@index > 0) and ( @i = @j) {
-        .loop-space-steps(@class, @suff, @type, @sign, (@index - 1)); // next iteration
+    .loop-space-steps(@type, @suff, @prop, @sign, @index: @i) when (@index > 0) and ( @i = @j) {
+        .loop-space-steps(@type, @suff, @prop, @sign, (@index - 1)); // next iteration
         @current-alias: extract(@spacealias, @index);
         @current-value: extract(@spaces, @index);
         @current-pre-value: extract(@spaces, (@index - 1));
 
         // we don't want .space-minus-zero-xs { margin: 0;}
-        & when not ((@class = minus) and (@index = 1)) {
-            .space-@{class}-@{current-alias}-@{suff}        { && { @{type}: (@current-value * @sign); } }
-            .space-@{class}-top-@{current-alias}-@{suff}    { && { @{type}-top: (@current-value * @sign); } }
-            .space-@{class}-bottom-@{current-alias}-@{suff} { && { @{type}-bottom: (@current-value * @sign); } }
-            .space-@{class}-left-@{current-alias}-@{suff}   { && { @{type}-left: (@current-value * @sign); } }
-            .space-@{class}-right-@{current-alias}-@{suff}  { && { @{type}-right: (@current-value * @sign); } }
-            .space-@{class}-v-@{current-alias}-@{suff}      { && { @{type}-top: (@current-value * @sign); @{type}-bottom: (@current-value * @sign); } }
-            .space-@{class}-h-@{current-alias}-@{suff}      { && { @{type}-left: (@current-value * @sign); @{type}-right: (@current-value * @sign); } }
+        & when not ((@type = minus) and (@index = 1)) {
+            .space-@{type}@{current-alias}@{suff}          { && { @{prop}:        (@current-value * @sign); } }
+            .space-@{type}@{top}@{current-alias}@{suff}    { && { @{prop}-top:    (@current-value * @sign); } }
+            .space-@{type}@{bottom}@{current-alias}@{suff} { && { @{prop}-bottom: (@current-value * @sign); } }
+            .space-@{type}@{left}@{current-alias}@{suff}   { && { @{prop}-left:   (@current-value * @sign); } }
+            .space-@{type}@{right}@{current-alias}@{suff}  { && { @{prop}-right:  (@current-value * @sign); } }
+            .space-@{type}@{v}@{current-alias}@{suff}      { && { @{prop}-top:    (@current-value * @sign); @{prop}-bottom: (@current-value * @sign); } }
+            .space-@{type}@{h}@{current-alias}@{suff}      { && { @{prop}-left:   (@current-value * @sign); @{prop}-right:  (@current-value * @sign); } }
 
             // we don't want tall and wide classes on zero and nano steps
             & when (@index > 2) {
-                .space-@{class}-tall-@{current-alias}-@{suff} { && { @{type}: (@current-value * @sign) (@current-pre-value * @sign); } }
-                .space-@{class}-wide-@{current-alias}-@{suff} { && { @{type}: (@current-pre-value * @sign) (@current-value * @sign); } }
+                .space-@{type}@{tall}@{current-alias}@{suff} { && { @{prop}: (@current-value * @sign) (@current-pre-value * @sign); } }
+                .space-@{type}@{wide}@{current-alias}@{suff} { && { @{prop}: (@current-pre-value * @sign) (@current-value * @sign); } }
             }
         }
     }
@@ -57,18 +67,17 @@
     // Render module with breakpoint suffix
     .space(@suff) {
 
-        .space-auto-@{suff}        { && { margin:        auto; } }
-        .space-auto-top-@{suff}    { && { margin-top:    auto; } }
-        .space-auto-bottom-@{suff} { && { margin-bottom: auto; } }
-        .space-auto-left-@{suff}   { && { margin-left:   auto; } }
-        .space-auto-right-@{suff}  { && { margin-right:  auto; } }
-        .space-auto-v-@{suff}      { && { margin-top: auto; margin-bottom: auto; } }
-        .space-auto-h-@{suff}      { && { margin-left: auto; margin-right: auto; } }
+        .space-auto@{suff}          { && { margin:        auto; } }
+        .space-auto@{top}@{suff}    { && { margin-top:    auto; } }
+        .space-auto@{bottom}@{suff} { && { margin-bottom: auto; } }
+        .space-auto@{left}@{suff}   { && { margin-left:   auto; } }
+        .space-auto@{right}@{suff}  { && { margin-right:  auto; } }
+        .space-auto@{v}@{suff}      { && { margin-top: auto; margin-bottom: auto; } }
+        .space-auto@{h}@{suff}      { && { margin-left: auto; margin-right: auto; } }
 
         .loop-space-steps(in, @suff, padding, 1, @i);
         .loop-space-steps(out, @suff, margin, 1, @i);
         .loop-space-steps(minus, @suff, margin, -1, @i);
-
     }
 
     // Create breakpoints
@@ -83,6 +92,7 @@
     }
 
     // Render default state before first breakpoint
+    .space(@none);
     .space(@first-suffix);
 
     // Render mediaqueries with breakpoints
