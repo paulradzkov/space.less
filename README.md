@@ -12,9 +12,9 @@ Together it is a part of communication language between designers and fronte
 ## Installation
 
 **Compiled from CDN**  
-[`https://unpkg.com/space.less@0.0.2/space.css`](https://unpkg.com/space.less@0.0.2/space.css)  
-[`https://unpkg.com/space.less@0.0.2/space.min.css`](https://unpkg.com/space.less@0.0.2/space.min.css)  
-[`https://unpkg.com/space.less@0.0.2/space.min.css.map`](https://unpkg.com/space.less@0.0.2/space.min.css.map)
+[`https://unpkg.com/space.less@0.0.3/space.css`](https://unpkg.com/space.less@0.0.3/space.css)  
+[`https://unpkg.com/space.less@0.0.3/space.min.css`](https://unpkg.com/space.less@0.0.3/space.min.css)  
+[`https://unpkg.com/space.less@0.0.3/space.min.css.map`](https://unpkg.com/space.less@0.0.3/space.min.css.map)
 
 **NPM**  
 `npm install space.less --save-dev`
@@ -46,7 +46,7 @@ Parameters stored in mixin:
 .space-settings() {
 
     @spaces: 0, 8px, 16px, 24px, 40px, 64px, 104px, 168px;
-    @spacealias: zero, nano, micro, mili, base, kilo, mega, giga;
+    @spacealias: -zero, -nano, -micro, -mili, -base, -kilo, -mega, -giga;
 
     // media breakpoints
     @breakpoints:
@@ -56,7 +56,7 @@ Parameters stored in mixin:
         ~"(min-width: 1200px)";
 
     // names for breakpoint suffixes
-    @suffixes: xs, sm, md, lg, xl;
+    @suffixes: ~"\:xs", ~"\:sm", ~"\:md", ~"\:lg", ~"\:xl";
 
     // IMPORTANT: suffixes count should be bigger than breakpoints count by 1
     // suffixes-count = breakpoints-count + 1
@@ -73,10 +73,9 @@ To change any (or every) parameter add setting mixin after import inside your .l
 .space-settings() {
 
     @spaces: 0, 5px, 10px, 25px, 50px;
-    @spacealias: zero, small, normal, large, huge;
+    @spacealias: _zero, _small, _normal, _large, _huge;
 
 }
 ```
 
 Only sizes and names for spacing was redefined in example above. Breakpoint parameters remains default.
-

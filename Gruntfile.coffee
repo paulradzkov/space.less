@@ -66,7 +66,6 @@ module.exports = (grunt) ->
 				]
 				tasks: [
 					'less'
-					'notify:less'
 				]
 
 		# start server
@@ -91,13 +90,6 @@ module.exports = (grunt) ->
 					async: true
 				command: 'docpad run'
 
-		# notify
-		notify:
-			less:
-				options:
-					title: 'LESS'
-					message: 'space.css compiled'
-
 	# measures the time each task takes
 	require('time-grunt')(grunt);
 
@@ -112,9 +104,8 @@ module.exports = (grunt) ->
 	grunt.loadNpmTasks 'grunt-contrib-cssmin'
 	grunt.loadNpmTasks 'grunt-shell-spawn'
 	grunt.loadNpmTasks 'grunt-newer'
-	grunt.loadNpmTasks 'grunt-notify'
 
 	# Register our Grunt tasks.
 	grunt.registerTask 'deploy',			 ['clean', 'less', 'cssmin', 'shell:deploy' ]
-	grunt.registerTask 'run',				 ['less', 'cssmin', 'notify:less', 'shell:docpadrun', 'watch:less']
+	grunt.registerTask 'run',				 ['less', 'cssmin', 'shell:docpadrun', 'watch:less']
 	grunt.registerTask 'default',			 ['run']

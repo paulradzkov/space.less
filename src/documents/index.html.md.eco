@@ -31,9 +31,9 @@ styles: [ 'css/demo.css' ]
 ## Installation
 
 **Compiled from CDN**  
-[`https://unpkg.com/space.less@0.0.2/space.css`](https://unpkg.com/space.less@0.0.2/space.css) <small>(7.7KB gzip)</small>  
-[`https://unpkg.com/space.less@0.0.2/space.min.css`](https://unpkg.com/space.less@0.0.2/space.min.css) <small>(7.2KB gzip)</small>  
-[`https://unpkg.com/space.less@0.0.2/space.min.css.map`](https://unpkg.com/space.less@0.0.2/space.min.css.map)
+[`https://unpkg.com/space.less@0.0.3/space.css`](https://unpkg.com/space.less@0.0.3/space.css) <small>(7.7KB gzip)</small>  
+[`https://unpkg.com/space.less@0.0.3/space.min.css`](https://unpkg.com/space.less@0.0.3/space.min.css) <small>(7.2KB gzip)</small>  
+[`https://unpkg.com/space.less@0.0.3/space.min.css.map`](https://unpkg.com/space.less@0.0.3/space.min.css.map)
 
 **NPM**  
 `npm install space.less --save-dev`
@@ -51,7 +51,7 @@ styles: [ 'css/demo.css' ]
 
     </div>
     <div class="col-xs-12 col-sm-min" style="min-width: 17em">
-        <p class="space-out-top-mili-xs">
+        <p class="space-out-top-mili:xs">
         As a foundation taken a set of values assigned to some aliases.
         The values are not random, this is a mathematical series where every next element is a sum of previous two elements; the first element is 8.
         </p>
@@ -60,41 +60,41 @@ styles: [ 'css/demo.css' ]
 
 ## Demo
 
-<div class="row space-minus-h-base-xs">
-    <div class="col-xs-shrink space-in-left-base-xs space-in-right-zero-xs">
-        <dl class="space-out-bottom-base-xs space-in-nano-xs space-demo space-demo-small">
+<div class="row space-minus-h-base:xs">
+    <div class="col-xs-shrink space-in-left-base:xs space-in-right-zero:xs">
+        <dl class="space-out-bottom-base:xs space-in-nano:xs space-demo space-demo-small">
             <dt class="alias"><code>nano</code></dt>
             <dd class="value">8</dd>
         </dl>
-        <dl class="space-out-bottom-base-xs space-in-micro-xs space-demo space-demo-small">
+        <dl class="space-out-bottom-base:xs space-in-micro:xs space-demo space-demo-small">
             <dt class="alias"><code>micro</code></dt>
             <dd class="value">16</dd>
         </dl>
-        <dl class="space-out-bottom-base-xs space-in-mili-xs space-demo space-demo-small">
+        <dl class="space-out-bottom-base:xs space-in-mili:xs space-demo space-demo-small">
             <dt class="alias"><code>mili</code></dt>
             <dd class="value">24</dd>
         </dl>
     </div>
-    <div class="col-xs-shrink space-in-left-base-xs space-in-right-zero-xs">
-        <dl class="space-out-bottom-base-xs space-in-base-xs space-demo">
+    <div class="col-xs-shrink space-in-left-base:xs space-in-right-zero:xs">
+        <dl class="space-out-bottom-base:xs space-in-base:xs space-demo">
             <dt class="alias"><code>base</code></dt>
-            <dd class="value space-out-top-nano-xs">40</dd>
+            <dd class="value space-out-top-nano:xs">40</dd>
         </dl>
-        <dl class="space-out-bottom-base-xs space-in-kilo-xs space-demo">
+        <dl class="space-out-bottom-base:xs space-in-kilo:xs space-demo">
             <dt class="alias"><code>kilo</code></dt>
-            <dd class="value space-out-top-micro-xs space-in-top-nano-xs">64</dd>
+            <dd class="value space-out-top-micro:xs space-in-top-nano:xs">64</dd>
         </dl>
     </div>
-    <div class="col-xs-shrink space-in-left-base-xs space-in-right-zero-xs">
-        <dl class="space-out-bottom-base-xs space-in-mega-xs space-demo space-demo-big">
+    <div class="col-xs-shrink space-in-left-base:xs space-in-right-zero:xs">
+        <dl class="space-out-bottom-base:xs space-in-mega:xs space-demo space-demo-big">
             <dt class="alias"><code>mega</code></dt>
             <dd class="value space-out-top-base-xs">104</dd>
         </dl>
     </div>
-    <div class="col-xs-shrink space-in-left-base-xs space-in-right-zero-xs">
-        <dl class="space-out-bottom-base-xs space-in-giga-xs space-demo space-demo-big">
+    <div class="col-xs-shrink space-in-left-base:xs space-in-right-zero:xs">
+        <dl class="space-out-bottom-base:xs space-in-giga:xs space-demo space-demo-big">
             <dt class="alias"><code>giga</code></dt>
-            <dd class="value space-out-top-kilo-xs space-in-top-micro-xs">168</dd>
+            <dd class="value space-out-top-kilo:xs space-in-top-micro:xs">168</dd>
         </dl>
     </div>
 </div>
@@ -109,7 +109,7 @@ For equal spaces on every side apply classnames constructed on the following sch
             <th>.space</th>
             <th>-out</th>
             <th>-mili</th>
-            <th>-md</th>
+            <th>:md</th>
             <th></th>
         </tr>
     </thead>
@@ -202,35 +202,35 @@ For equal spaces on every side apply classnames constructed on the following sch
             <td></td>
             <td></td>
             <td></td>
-            <td>-xs</td>
+            <td>:xs</td>
             <td>— for all screens</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td>-sm</td>
+            <td>:sm</td>
             <td>— min-width: 576px</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td>-md</td>
+            <td>:md</td>
             <td>— min-width: 768px</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td>-lg</td>
+            <td>:lg</td>
             <td>— min-width: 992px</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td>-xl</td>
+            <td>:xl</td>
             <td>— min-width: 1200px</td>
         </tr>
     </tbody>
@@ -238,7 +238,7 @@ For equal spaces on every side apply classnames constructed on the following sch
 
 **Exclusions:**
 
-1. Classes `.space-auto-xs` and similiar don't have 'value' part.
+1. Classes `.space-auto:xs` and similiar don't have 'value' part.
 2. Suffix `-zero` could be applied only to `.space-in` and `.space-out` classnames. It can't be used together with `.space-minus` or `.space-auto`.
 
 For non-rectangular spacings use additional class modifier:
@@ -250,7 +250,7 @@ For non-rectangular spacings use additional class modifier:
             <th>-in</th>
             <th>-tall</th>
             <th>-kilo</th>
-            <th>-xs</th>
+            <th>:xs</th>
         </tr>
     </thead>
     <tbody>
@@ -333,7 +333,7 @@ Parameters stored in mixin:
 .space-settings() {
 
     @spaces: 0, 8px, 16px, 24px, 40px, 64px, 104px, 168px;
-    @spacealias: zero, nano, micro, mili, base, kilo, mega, giga;
+    @spacealias: -zero, -nano, -micro, -mili, -base, -kilo, -mega, -giga;
 
     // media breakpoints
     @breakpoints:
@@ -343,7 +343,7 @@ Parameters stored in mixin:
         ~"(min-width: 1200px)";
 
     // names for breakpoint suffixes
-    @suffixes: xs, sm, md, lg, xl;
+    @suffixes: ~"\:xs", ~"\:sm", ~"\:md", ~"\:lg", ~"\:xl";
 
     // IMPORTANT: suffixes count should be bigger than breakpoints count by 1
     // suffixes-count = breakpoints-count + 1
@@ -360,7 +360,8 @@ To change any (or every) parameter add setting mixin after import inside your .l
 .space-settings() {
 
     @spaces: 0, 5px, 10px, 25px, 50px;
-    @spacealias: zero, small, normal, large, huge;
+    @spacealias: _zero, _small, _normal, _large, _huge;
+    @suffixes: --xs, --sm, --md, --lg, --xl;
 
 }
 ```
