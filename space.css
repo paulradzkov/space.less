@@ -1,4 +1,14 @@
 /* space.less v0.0.3 | MIT License | github.com/paulradzkov/space.less */
+:root {
+  --space-zero: 0;
+  --space-nano: 8px;
+  --space-micro: 16px;
+  --space-mili: 24px;
+  --space-base: 40px;
+  --space-kilo: 64px;
+  --space-mega: 104px;
+  --space-giga: 168px;
+}
 .space-auto.space-auto {
   margin: auto;
 }

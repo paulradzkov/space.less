@@ -13,13 +13,16 @@
         ~"(min-width: 1200px)";
 
     // names for breakpoint suffixes
-    @suffixes: ~"\:xs", ~"\:sm", ~"\:md", ~"\:lg", ~"\:xl";
+    @suffixes: xs, sm, md, lg, xl;
+    @suffixes-separator: ~"\:";  // will render css as .space-auto\:xs
 
     // IMPORTANT: suffixes count should be bigger than breakpoints count by 1
     // suffixes-count = breakpoints-count + 1
+
+    @cust-prop: true; // enable css custom properties
 }
 
-@space-render: {
+& {
 
     .space-settings();
 
@@ -46,34 +49,42 @@
         @current-value: extract(@spaces, @index);
         @current-pre-value: extract(@spaces, (@index - 1));
 
-        // we don't want .space-minus-zero-xs { margin: 0;}
+        // we don't want .space-minus-zero:xs { margin: 0;}
         & when not ((@type = minus) and (@index = 1)) {
-            .space-@{type}@{current-alias}@{suff}          { && { @{prop}:        (@current-value * @sign); } }
-            .space-@{type}@{top}@{current-alias}@{suff}    { && { @{prop}-top:    (@current-value * @sign); } }
-            .space-@{type}@{bottom}@{current-alias}@{suff} { && { @{prop}-bottom: (@current-value * @sign); } }
-            .space-@{type}@{left}@{current-alias}@{suff}   { && { @{prop}-left:   (@current-value * @sign); } }
-            .space-@{type}@{right}@{current-alias}@{suff}  { && { @{prop}-right:  (@current-value * @sign); } }
-            .space-@{type}@{v}@{current-alias}@{suff}      { && { @{prop}-top:    (@current-value * @sign); @{prop}-bottom: (@current-value * @sign); } }
-            .space-@{type}@{h}@{current-alias}@{suff}      { && { @{prop}-left:   (@current-value * @sign); @{prop}-right:  (@current-value * @sign); } }
+            .space-@{type}@{current-alias}@{suff-sep}@{suff}          { && { @{prop}:        (@current-value * @sign); } }
+            .space-@{type}@{top}@{current-alias}@{suff-sep}@{suff}    { && { @{prop}-top:    (@current-value * @sign); } }
+            .space-@{type}@{bottom}@{current-alias}@{suff-sep}@{suff} { && { @{prop}-bottom: (@current-value * @sign); } }
+            .space-@{type}@{left}@{current-alias}@{suff-sep}@{suff}   { && { @{prop}-left:   (@current-value * @sign); } }
+            .space-@{type}@{right}@{current-alias}@{suff-sep}@{suff}  { && { @{prop}-right:  (@current-value * @sign); } }
+            .space-@{type}@{v}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-top:    (@current-value * @sign); @{prop}-bottom: (@current-value * @sign); } }
+            .space-@{type}@{h}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-left:   (@current-value * @sign); @{prop}-right:  (@current-value * @sign); } }
 
             // we don't want tall and wide classes on zero and nano steps
             & when (@index > 2) {
-                .space-@{type}@{tall}@{current-alias}@{suff} { && { @{prop}: (@current-value * @sign) (@current-pre-value * @sign); } }
-                .space-@{type}@{wide}@{current-alias}@{suff} { && { @{prop}: (@current-pre-value * @sign) (@current-value * @sign); } }
+                .space-@{type}@{tall}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: (@current-value * @sign) (@current-pre-value * @sign); } }
+                .space-@{type}@{wide}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: (@current-pre-value * @sign) (@current-value * @sign); } }
             }
         }
     }
 
-    // Render module with breakpoint suffix
-    .space(@suff) {
+    .render-cust-props(@index: @i) when (@cust-prop = true) and (@index > 0) and ( @i = @j) {
+        .render-cust-props(@index - 1);
+        @current-alias: extract(@spacealias, @index);
+        @current-value: extract(@spaces, @index);
 
-        .space-auto@{suff}          { && { margin:        auto; } }
-        .space-auto@{top}@{suff}    { && { margin-top:    auto; } }
-        .space-auto@{bottom}@{suff} { && { margin-bottom: auto; } }
-        .space-auto@{left}@{suff}   { && { margin-left:   auto; } }
-        .space-auto@{right}@{suff}  { && { margin-right:  auto; } }
-        .space-auto@{v}@{suff}      { && { margin-top: auto; margin-bottom: auto; } }
-        .space-auto@{h}@{suff}      { && { margin-left: auto; margin-right: auto; } }
+        --space@{current-alias}: @current-value;
+    }
+
+    // Render module with breakpoint suffix
+    .space(@suff; @suff-sep: @suffixes-separator) {
+
+        .space-auto@{suff-sep}@{suff}          { && { margin:        auto; } }
+        .space-auto@{top}@{suff-sep}@{suff}    { && { margin-top:    auto; } }
+        .space-auto@{bottom}@{suff-sep}@{suff} { && { margin-bottom: auto; } }
+        .space-auto@{left}@{suff-sep}@{suff}   { && { margin-left:   auto; } }
+        .space-auto@{right}@{suff-sep}@{suff}  { && { margin-right:  auto; } }
+        .space-auto@{v}@{suff-sep}@{suff}      { && { margin-top: auto; margin-bottom: auto; } }
+        .space-auto@{h}@{suff-sep}@{suff}      { && { margin-left: auto; margin-right: auto; } }
 
         .loop-space-steps(in, @suff, padding, 1, @i);
         .loop-space-steps(out, @suff, margin, 1, @i);
@@ -91,12 +102,14 @@
         }
     }
 
+    :root when (@cust-prop = true) {
+        .render-cust-props();
+    }
+
     // Render default state before first breakpoint
-    .space(@none);
+    .space(@none, @suff-sep:@none);
     .space(@first-suffix);
 
     // Render mediaqueries with breakpoints
     .responsive();
-};
-
-@space-render();
+}
