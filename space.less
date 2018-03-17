@@ -47,32 +47,76 @@
         .loop-space-steps(@type, @suff, @prop, @sign, (@index - 1)); // next iteration
         @current-alias: extract(@spacealias, @index);
         @current-value: extract(@spaces, @index);
+        @current-pre-alias: extract(@spacealias, (@index - 1));
         @current-pre-value: extract(@spaces, (@index - 1));
 
-        // we don't want .space-minus-zero:xs { margin: 0;}
-        & when not ((@type = minus) and (@index = 1)) {
-            .space-@{type}@{current-alias}@{suff-sep}@{suff}          { && { @{prop}:        (@current-value * @sign); } }
-            .space-@{type}@{top}@{current-alias}@{suff-sep}@{suff}    { && { @{prop}-top:    (@current-value * @sign); } }
-            .space-@{type}@{bottom}@{current-alias}@{suff-sep}@{suff} { && { @{prop}-bottom: (@current-value * @sign); } }
-            .space-@{type}@{left}@{current-alias}@{suff-sep}@{suff}   { && { @{prop}-left:   (@current-value * @sign); } }
-            .space-@{type}@{right}@{current-alias}@{suff-sep}@{suff}  { && { @{prop}-right:  (@current-value * @sign); } }
-            .space-@{type}@{v}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-top:    (@current-value * @sign); @{prop}-bottom: (@current-value * @sign); } }
-            .space-@{type}@{h}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-left:   (@current-value * @sign); @{prop}-right:  (@current-value * @sign); } }
+        & when (@cust-prop = true) {
 
-            // we don't want tall and wide classes on zero and nano steps
-            & when (@index > 2) {
-                .space-@{type}@{tall}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: (@current-value * @sign) (@current-pre-value * @sign); } }
-                .space-@{type}@{wide}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: (@current-pre-value * @sign) (@current-value * @sign); } }
+            // we don't want .space-minus-zero:xs { margin: 0;}
+            & when not ((@type = minus) and (@index = 1)) {
+                & when (@sign = 1) {
+                    .space-@{type}@{current-alias}@{suff-sep}@{suff}          { && { @{prop}:        ~"var(--space@{current-alias})"; } }
+                    .space-@{type}@{top}@{current-alias}@{suff-sep}@{suff}    { && { @{prop}-top:    ~"var(--space@{current-alias})"; } }
+                    .space-@{type}@{bottom}@{current-alias}@{suff-sep}@{suff} { && { @{prop}-bottom: ~"var(--space@{current-alias})"; } }
+                    .space-@{type}@{left}@{current-alias}@{suff-sep}@{suff}   { && { @{prop}-left:   ~"var(--space@{current-alias})"; } }
+                    .space-@{type}@{right}@{current-alias}@{suff-sep}@{suff}  { && { @{prop}-right:  ~"var(--space@{current-alias})"; } }
+                    .space-@{type}@{v}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-top:    ~"var(--space@{current-alias})"; @{prop}-bottom: ~"var(--space@{current-alias})"; } }
+                    .space-@{type}@{h}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-left:   ~"var(--space@{current-alias})"; @{prop}-right:  ~"var(--space@{current-alias})"; } }
+
+                    // we don't want tall and wide classes on zero and nano steps
+                    & when (@index > 2) {
+                        .space-@{type}@{tall}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: ~"var(--space@{current-alias})" ~"var(--space@{current-pre-alias})"; } }
+                        .space-@{type}@{wide}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: ~"var(--space@{current-pre-alias})" ~"var(--space@{current-alias})"; } }
+                    }
+                }
+                & when (@sign = -1) {
+                    .space-@{type}@{current-alias}@{suff-sep}@{suff}          { && { @{prop}:        ~"var(--space-minus@{current-alias})"; } }
+                    .space-@{type}@{top}@{current-alias}@{suff-sep}@{suff}    { && { @{prop}-top:    ~"var(--space-minus@{current-alias})"; } }
+                    .space-@{type}@{bottom}@{current-alias}@{suff-sep}@{suff} { && { @{prop}-bottom: ~"var(--space-minus@{current-alias})"; } }
+                    .space-@{type}@{left}@{current-alias}@{suff-sep}@{suff}   { && { @{prop}-left:   ~"var(--space-minus@{current-alias})"; } }
+                    .space-@{type}@{right}@{current-alias}@{suff-sep}@{suff}  { && { @{prop}-right:  ~"var(--space-minus@{current-alias})"; } }
+                    .space-@{type}@{v}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-top:    ~"var(--space-minus@{current-alias})"; @{prop}-bottom: ~"var(--space-minus@{current-alias})"; } }
+                    .space-@{type}@{h}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-left:   ~"var(--space-minus@{current-alias})"; @{prop}-right:  ~"var(--space-minus@{current-alias})"; } }
+
+                    // we don't want tall and wide classes on zero and nano steps
+                    & when (@index > 2) {
+                        .space-@{type}@{tall}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: ~"var(--space-minus@{current-alias})" ~"var(--space-minus@{current-pre-alias})"; } }
+                        .space-@{type}@{wide}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: ~"var(--space-minus@{current-pre-alias})" ~"var(--space-minus@{current-alias})"; } }
+                    }
+                }
+            }
+        }
+
+        & when (@cust-prop = false) {
+
+            // we don't want .space-minus-zero:xs { margin: 0;}
+            & when not ((@type = minus) and (@index = 1)) {
+                .space-@{type}@{current-alias}@{suff-sep}@{suff}          { && { @{prop}:        (@current-value * @sign); } }
+                .space-@{type}@{top}@{current-alias}@{suff-sep}@{suff}    { && { @{prop}-top:    (@current-value * @sign); } }
+                .space-@{type}@{bottom}@{current-alias}@{suff-sep}@{suff} { && { @{prop}-bottom: (@current-value * @sign); } }
+                .space-@{type}@{left}@{current-alias}@{suff-sep}@{suff}   { && { @{prop}-left:   (@current-value * @sign); } }
+                .space-@{type}@{right}@{current-alias}@{suff-sep}@{suff}  { && { @{prop}-right:  (@current-value * @sign); } }
+                .space-@{type}@{v}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-top:    (@current-value * @sign); @{prop}-bottom: (@current-value * @sign); } }
+                .space-@{type}@{h}@{current-alias}@{suff-sep}@{suff}      { && { @{prop}-left:   (@current-value * @sign); @{prop}-right:  (@current-value * @sign); } }
+
+                // we don't want tall and wide classes on zero and nano steps
+                & when (@index > 2) {
+                    .space-@{type}@{tall}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: (@current-value * @sign) (@current-pre-value * @sign); } }
+                    .space-@{type}@{wide}@{current-alias}@{suff-sep}@{suff} { && { @{prop}: (@current-pre-value * @sign) (@current-value * @sign); } }
+                }
             }
         }
     }
 
     .render-cust-props(@index: @i) when (@cust-prop = true) and (@index > 0) and ( @i = @j) {
-        .render-cust-props(@index - 1);
+        .render-cust-props((@index - 1));
         @current-alias: extract(@spacealias, @index);
         @current-value: extract(@spaces, @index);
 
         --space@{current-alias}: @current-value;
+        & when (@current-value > 0) {
+            --space-minus@{current-alias}: (@current-value * -1);
+        }
     }
 
     // Render module with breakpoint suffix
@@ -102,6 +146,7 @@
         }
     }
 
+    // Render css custom properties
     :root when (@cust-prop = true) {
         .render-cust-props();
     }

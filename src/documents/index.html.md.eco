@@ -88,7 +88,7 @@ styles: [ 'css/demo.css' ]
     <div class="col-xs-shrink space-in-left-base:xs space-in-right-zero:xs">
         <dl class="space-out-bottom-base:xs space-in-mega:xs space-demo space-demo-big">
             <dt class="alias"><code>mega</code></dt>
-            <dd class="value space-out-top-base-xs">104</dd>
+            <dd class="value space-out-top-base:xs">104</dd>
         </dl>
     </div>
     <div class="col-xs-shrink space-in-left-base:xs space-in-right-zero:xs">
