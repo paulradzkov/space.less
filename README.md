@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/space.less.svg)](http://badge.fury.io/js/space.less)
 [![bower version](https://badge.fury.io/bo/space.less.svg)](http://badge.fury.io/bo/space.less)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaulradzkov%2Fspace.less.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaulradzkov%2Fspace.less?ref=badge_shield)
 
 Designed to make margins, paddings, gutters consistent across the project.
 
@@ -80,3 +81,7 @@ To change any (or every) parameter add setting mixin after import inside your .l
 
 Only sizes and names for spacing was redefined in example above. Breakpoint parameters remains default.
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fpaulradzkov%2Fspace.less.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fpaulradzkov%2Fspace.less?ref=badge_large)
